@@ -1,1213 +1,607 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Sterling Research | RESEARCH. REFINED. REDEFINED</title>
-
     
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700;900&family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
-
-
     <style>
-
         /* --- 1. COLOR VARIABLES & BASICS --- */
-
         :root {
-
             --primary-dark: #0B1221; /* Deep Navy */
-
             --accent-purple: #3A2E70; /* Indigo/Purple Accent */
-
             --accent-light: #5f529e; /* Lighter shade for gradients */
-
             --text-dark: #333333;
-
             --white: #ffffff;
-
             --bcg-gray: #f4f6f8; /* Light gray for subtle section breaks */
-
         }
-
-
 
         * {
-
             margin: 0;
-
             padding: 0;
-
             box-sizing: border-box;
-
             scroll-behavior: smooth;
-
         }
-
-
 
         body {
-
             font-family: 'Open Sans', sans-serif;
-
             color: var(--text-dark);
-
             line-height: 1.6;
-
             background-color: var(--white);
-
         }
-
-
 
         h1, h2, h3 {
-
             font-family: 'Merriweather', serif; 
-
             font-weight: 900;
-
         }
-
-
 
         a {
-
             text-decoration: none;
-
             color: inherit;
-
             transition: color 0.3s, border 0.3s;
-
         }
-
-
 
         /* Utility Class for Center Alignment */
-
         .text-center { text-align: center; }
 
-
-
         /* --- 2. NAVIGATION BAR --- */
-
         header {
-
             background-color: var(--primary-dark);
-
             color: var(--white);
-
             padding: 1rem 5%;
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
             position: sticky;
-
             top: 0;
-
             z-index: 1000;
-
             border-bottom: 4px solid var(--accent-purple);
-
         }
-
-
 
         .logo {
-
             font-family: 'Merriweather', serif;
-
             font-size: 1.6rem;
-
             letter-spacing: 1px;
-
             font-weight: bold;
-
         }
-
-
 
         nav ul {
-
             list-style: none;
-
             display: flex;
-
             gap: 2.5rem;
-
         }
-
-
 
         nav a {
-
             font-weight: 600;
-
             padding-bottom: 5px;
-
             border-bottom: 2px solid transparent;
-
         }
-
-
 
         nav a:hover {
-
             color: var(--accent-light);
-
             border-bottom: 2px solid var(--accent-light);
-
         }
-
-
 
         /* --- 3. HERO SECTION --- */
-
         .hero {
-
             background: linear-gradient(145deg, var(--primary-dark) 0%, var(--accent-purple) 100%);
-
             height: 90vh; 
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             text-align: center;
-
             color: var(--white);
-
             padding: 0 5%;
-
         }
-
-
 
         .hero-content h1 {
-
             font-size: 4.5rem;
-
             margin-bottom: 0.5rem;
-
             text-transform: uppercase;
-
             letter-spacing: 3px;
-
             text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-
         }
-
-
 
         .hero-content p {
-
             font-size: 1.4rem;
-
             font-weight: 300;
-
             margin-bottom: 3rem;
-
         }
-
-
 
         .btn-main {
-
             padding: 15px 45px;
-
             background-color: var(--white);
-
             border: none;
-
             color: var(--primary-dark);
-
             font-weight: 800;
-
             text-transform: uppercase;
-
             cursor: pointer;
-
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-
             transition: background-color 0.3s, transform 0.2s;
-
         }
-
-
 
         .btn-main:hover {
-
             background-color: var(--accent-light);
-
             color: var(--white);
-
             transform: translateY(-2px);
-
         }
-
-
 
         /* --- 4. SECTION STYLING & SKEWED BREAK --- */
-
         .section {
-
             padding: 80px 10%;
-
         }
-
-
 
         .section-title {
-
             font-size: 2.8rem;
-
             margin-bottom: 40px;
-
             color: var(--primary-dark);
-
             text-align: center;
-
         }
-
-
 
         .skewed-accent {
-
             background-color: var(--accent-purple);
-
             color: var(--white);
-
             padding: 50px 10%;
-
             transform: skewY(-2deg);
-
             margin: 100px 0;
-
         }
-
-
 
         .skewed-content {
-
             transform: skewY(2deg);
-
             text-align: center;
-
         }
-
-
 
         .skewed-content h3 {
-
             font-size: 2rem;
-
             margin-bottom: 15px;
-
         }
-
-
 
         /* --- 5. INSIGHTS / REPORTS (Dynamic Cards) --- */
-
         .insights-bg {
-
             background-color: var(--bcg-gray);
-
         }
-
-
 
         .grid-container {
-
             display: grid;
-
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-
             gap: 30px;
-
         }
-
-
 
         .report-card {
-
             background: var(--white);
-
             border-top: 5px solid var(--accent-purple);
-
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-
             transition: all 0.3s ease;
-
         }
-
-
 
         .report-card:hover {
-
             transform: translateY(-8px);
-
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-
         }
-
-
 
         .card-image {
-
             height: 200px;
-
             background: linear-gradient(to top right, var(--primary-dark), var(--accent-purple)); 
-
             opacity: 0.8;
-
             transition: opacity 0.3s;
-
         }
-
-
 
         .report-card:hover .card-image {
-
             opacity: 1;
-
         }
-
-
 
         .card-content {
-
             padding: 30px;
-
         }
-
-
 
         .card-category {
-
             font-size: 0.9rem;
-
             text-transform: uppercase;
-
             color: var(--accent-purple);
-
             font-weight: 800;
-
             letter-spacing: 1px;
-
             margin-bottom: 10px;
-
             display: block;
-
         }
-
         
-
         /* Style for the clickable title links */
-
         .card-title {
-
             font-size: 1.6rem;
-
             margin-bottom: 15px;
-
             color: var(--primary-dark);
-
             line-height: 1.2;
-
             cursor: pointer; 
-
         }
-
-
 
         .card-title a {
-
             color: var(--primary-dark); /* Keep color consistent with non-linked title */
-
             display: block; /* Makes the entire title area clickable */
-
         }
-
-
 
         .card-title a:hover {
-
             color: var(--accent-light);
-
             border-bottom: none; 
-
         }
-
         
-
         .read-more {
-
             font-weight: 700;
-
             color: var(--accent-purple);
-
             padding-bottom: 3px;
-
             border-bottom: 2px solid transparent;
-
         }
-
-
 
         .read-more:hover {
-
             color: var(--accent-light);
-
             border-bottom: 2px solid var(--accent-light);
-
         }
-
         
-
         /* --- 6. CONTACT SECTION (Two-Column Layout) --- */
-
         .contact-section {
-
             background-color: var(--primary-dark);
-
             color: var(--white);
-
             padding: 100px 10%;
-
         }
-
         
-
         .contact-title {
-
             color: var(--white);
-
             font-size: 2.8rem;
-
             margin-bottom: 60px;
-
             text-align: center;
-
         }
-
         
-
         .contact-content {
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: flex-start;
-
             gap: 40px;
-
             max-width: 1200px;
-
             margin: 0 auto;
-
         }
-
-
 
         .contact-form-wrapper {
-
             flex: 1;
-
             min-width: 300px;
-
         }
-
-
 
         .contact-text-block {
-
             flex: 1;
-
             padding-left: 20px;
-
             padding-top: 30px;
-
             max-width: 400px;
-
         }
-
-
 
         .contact-text-block h3 {
-
             font-size: 2.2rem;
-
             color: var(--accent-purple);
-
             margin-bottom: 20px;
-
         }
-
-
 
         .contact-text-block p {
-
             font-size: 1.1rem;
-
             line-height: 1.8;
-
             opacity: 0.9;
-
         }
-
         
-
         .contact-form {
-
             max-width: 100%;
-
             padding: 30px;
-
             background-color: #1a2333;
-
             border-radius: 8px;
-
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-
         }
-
         
-
         .form-group {
-
             margin-bottom: 25px;
-
         }
-
         
-
         .form-group label {
-
             display: block;
-
             margin-bottom: 8px;
-
             font-weight: 600;
-
             color: var(--bcg-gray);
-
         }
-
         
-
         .form-input, .form-textarea {
-
             width: 100%;
-
             padding: 12px 15px;
-
             border: 1px solid #3A475C;
-
             border-radius: 4px;
-
             background-color: #0B1221;
-
             color: var(--white);
-
             font-size: 1rem;
-
             transition: border-color 0.3s, box-shadow 0.3s;
-
         }
-
-
 
         .form-input:focus, .form-textarea:focus {
-
             border-color: var(--accent-purple);
-
             outline: none;
-
             box-shadow: 0 0 0 3px rgba(58, 46, 112, 0.4);
-
         }
-
         
-
         .form-textarea {
-
             resize: vertical;
-
             min-height: 150px;
-
         }
-
         
-
         .btn-submit {
-
             width: 100%;
-
             padding: 15px 0;
-
             background-color: var(--accent-purple);
-
             color: var(--white);
-
             font-weight: 800;
-
             text-transform: uppercase;
-
             border: none;
-
             border-radius: 4px;
-
             cursor: pointer;
-
             box-shadow: 0 4px 15px rgba(58, 46, 112, 0.4);
-
             transition: background-color 0.3s, transform 0.2s;
-
         }
-
         
-
         .btn-submit:hover {
-
             background-color: var(--accent-light);
-
             transform: translateY(-2px);
-
         }
-
-
 
         /* --- 7. FOOTER --- */
-
         footer {
-
             background-color: var(--primary-dark);
-
             color: var(--white);
-
             padding: 60px 10%;
-
             text-align: center;
-
             border-top: 5px solid var(--accent-purple);
-
         }
-
-
 
         /* MOBILE OPTIMIZATION (RESPONSIVENESS) */
-
         @media (max-width: 900px) {
-
             
-
             /* General Section Padding */
-
             .section, .contact-section { 
-
                 padding: 50px 5%; 
-
             }
-
             .skewed-accent { 
-
                 margin: 50px 0; 
-
             }
-
             
-
             /* Header/Navigation Adjustments for mobile */
-
             header {
-
                 flex-direction: column;
-
                 padding: 1rem 5%;
-
             }
-
             .logo {
-
                 margin-bottom: 10px;
-
             }
-
             nav ul { 
-
                 gap: 1rem; 
-
                 padding: 0;
-
                 justify-content: center;
-
             }
-
             
-
             /* Hero Section Font Size */
-
             .hero-content h1 { 
-
                 font-size: 2.5rem; 
-
             }
-
             .hero-content p { 
-
                 font-size: 1.1rem; 
-
             }
-
             
-
             /* Insights Grid: Adjust minmax for better use of screen width */
-
             .grid-container {
-
                 grid-template-columns: 1fr; /* Stack cards vertically */
-
             }
-
-
 
             /* Contact Section Layout Change (Stacking) */
-
             .contact-content {
-
                 flex-direction: column;
-
                 align-items: center;
-
                 gap: 30px; /* Reduced gap */
-
             }
-
             .contact-text-block {
-
                 order: -1; /* Text block above the form on mobile */
-
                 text-align: center;
-
                 max-width: 100%;
-
                 padding-left: 0;
-
                 padding-top: 0;
-
             }
-
             .contact-text-block h3 {
-
-                 font-size: 1.8rem;
-
+                font-size: 1.8rem;
             }
-
             .contact-form-wrapper {
-
-                 min-width: unset; /* Allows form to take full width */
-
-                 width: 100%;
-
+                min-width: unset; /* Allows form to take full width */
+                width: 100%;
             }
-
         }
-
     </style>
-
 </head>
-
 <body>
 
-
-
     <header>
-
         <div class="logo">Sterling Research</div>
-
         <nav>
-
             <ul>
-
                 <li><a href="#">Home</a></li>
-
                 <li><a href="#about">About Firm</a></li>
-
                 <li><a href="#insights">Insights & Reports</a></li>
-
                 <li><a href="#contact">Contact</a></li>
-
             </ul>
-
         </nav>
-
     </header>
 
-
-
     <section class="hero">
-
         <div class="hero-content">
-
             <h1>RESEARCH. REFINED. REDEFINED</h1>
-
             <p>Market Report | Analysis | Evaluation</p>
-
             <a href="#insights" class="btn-main">View Our Latest Intelligence</a>
-
         </div>
-
     </section>
-
-
 
     <section id="about" class="section">
-
         <h2 class="section-title">Data-Driven Equity Research.</h2>
-
         
-
         <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-
             <p style="font-size: 1.15rem; margin-bottom: 20px;">
-
                 At Sterling Research, we deliver high-quality, data-driven equity research designed to help investors navigate an increasingly dynamic market landscape. Our core strengths include macroeconomic analysis, sector research, fundamental company evaluation, and financial modeling — empowering institutional investors and sophisticated individuals with actionable insights.
-
             </p>
-
             <p style="font-size: 1.15rem; margin-bottom: 40px;">
-
                 Our mission is simple:
-
 Provide clarity, depth, and unbiased intelligence that supports smarter long-term investment decisions.
 
-
-
 Follow us for consistent market updates, industry trends, and in-depth equity insights.
-
             </p>
 
-
-
             <div style="padding: 20px; border: 1px solid var(--accent-purple); background-color: var(--bcg-gray); border-radius: 4px;">
-
                 <h3 style="font-size: 1.2rem; color: var(--primary-dark); font-weight: 700; margin-bottom: 5px;">Disclaimer:</h3>
-
                 <p style="font-size: 0.95rem; line-height: 1.4; color: var(--text-dark);">
-
                     Disclaimer: Sterling Research is not a SEBI-registered research analyst or investment advisor. All content is for informational and educational purposes only, based on publicly available data.
-
                 </p>
-
             </div>
-
         </div>
-
     </section>
-
-
 
     <section class="skewed-accent">
-
         <div class="skewed-content">
-
             <h3>"Markets reward clarity. We help you see what others overlook."</h3>
-
-                   <p style="opacity: 0.8; font-weight: 300;">  — Sterling Research</p>
-
+                       <p style="opacity: 0.8; font-weight: 300;"> — Sterling Research</p>
         </div>
-
     </section>
 
-
-
    <section class="section insights-bg" id="insights">
-
         <h2 class="section-title">Latest Perspectives &amp; Reports</h2>
-
-
 
         <div class="grid-container">
 
-
-
             <div class="report-card">
-
                 <div class="card-image"></div>
-
                 <div class="card-content">
-
                     <span class="card-category">MARKET REPORT</span>
-
                     <h3 class="card-title">
-
                         <a href="reports/stock.pdf" target="_blank" rel="noopener">
-
                             THE GREAT INDIAN STOCK STAMPEDE
-
                         </a>
-
                     </h3>
-
                     <p>
-
                         Examines India's rapid retail investor surge, highlighting sustainability concerns linked to rising household debt and market risks balanced by financial inclusion gains.            
-
                     </p>
-
                     <a href="reports/stock.pdf" class="read-more" target="_blank" rel="noopener">
-
                         Read Report →
-
                     </a>
-
                 </div>
-
             </div>
 
-
-
             <div class="report-card">
-
                 <div class="card-image"></div>
-
                 <div class="card-content">
-
                     <span class="card-category">ANALYSIS</span>
-
                     <h3 class="card-title">
-
                         <a href="reports/Yatharth.pdf" target="_blank" rel="noopener">
-
                             Equity Research Report Yatharth Hospital
-
                         </a>
-
                     </h3>
-
                     <p>
-
                         Fundamental analysis of Yatharth Hospital, covering business model,
-
                         financial metrics, growth drivers, and key investment risks.
-
                     </p>
-
                     <a href="reports/Yatharth.pdf" class="read-more" target="_blank" rel="noopener">
-
                         Read Report →
-
                     </a>
-
                 </div>
-
             </div>
-
-
 
             <div class="report-card">
-
                 <div class="card-image"></div>
-
                 <div class="card-content">
-
                     <span class="card-category">EVALUATION</span>
-
                     <h3 class="card-title">
-
                         <a href="reports/report.pdf" target="_blank" rel="noopener">
-
                             Indian Diagnostic Industry Research
-
                         </a>
-
                     </h3>
-
                     <p>
-
                         Study on India's diagnostics industry
-
                     </p>
-
                     <a href="reports/report.pdf" class="read-more" target="_blank" rel="noopener">
-
                         Read Report →
-
                     </a>
-
                 </div>
-
             </div>
-
-
 
         </div>
-
     </section>
-
-
 
     
-
     <section id="contact" class="contact-section">
-
         <h2 class="contact-title">Inquire About Our Services</h2>
-
         
-
         <div class="contact-content">
-
             
-
             <div class="contact-form-wrapper">
-
-                <form class="contact-form" action="#" method="POST">
-
+                <form class="contact-form" action="https://formspree.io/f/mzznaabw" method="POST">
                     <div class="form-group">
-
                         <label for="name">Your Name</label>
-
-                        <input type="text" id="name" class="form-input" required>
-
+                        <input type="text" id="name" class="form-input" name="name" required>
                     </div>
-
                     
-
                     <div class="form-group">
-
                         <label for="email">Email</label>
-
-                        <input type="email" id="email" class="form-input" required>
-
+                        <input type="email" id="email" class="form-input" name="email" required>
                     </div>
-
                     
-
                     <div class="form-group">
-
                         <label for="company">Number</label>
-
-                        <input type="text" id="company" class="form-input">
-
+                        <input type="text" id="company" class="form-input" name="number">
                     </div>
-
                     
-
                     <div class="form-group">
-
                         <label for="message">Your Inquiry</label>
-
-                        <textarea id="message" class="form-textarea" required></textarea>
-
+                        <textarea id="message" class="form-textarea" name="message" required></textarea>
                     </div>
-
                     
-
                     <button type="submit" class="btn-submit">Submit Inquiry</button>
-
                 </form>
-
             </div>
-
             
-
             <div class="contact-text-block">
-
                 <h3>Let’s Partner to Power Your Next Decision.</h3>
-
                 <p>
-
                     We provide investors and businesses with the insights they need to navigate markets with precision.
-
                 </p>
-
                 <p style="margin-top: 15px;">
-
                     Whether you're looking for custom research, advanced analytics, or strategic guidance, our team is here to support you every step of the way.
-
                 </p>
-
                 <p style="margin-top: 25px; font-weight: 800; color: var(--accent-light);">
-
                     Get in touch today.
-
                 </p>
-
             </div>
-
             
-
         </div>
-
     </section>
 
-
-
     <footer>
-
         <span class="footer-logo">Sterling Research</span>
-
         <div class="contact-info">
-
            <p>
-
  Domain: www.sterlingresearch.in<br>
-
  Email:
-
  <a href="mailto:sterlingresearch4@gmail.com">
-
-   sterlingresearch4@gmail.com
-
+    sterlingresearch4@gmail.com
  </a><br>
-
  Connect with us on LinkedIn for updates:
-
  <a href="https://www.linkedin.com/company/sterlingresearch"
-
     target="_blank" rel="noopener">
-
-   https://www.linkedin.com/company/sterlingresearch
-
+    https://www.linkedin.com/company/sterlingresearch
  </a>
-
 </p>
 
 
-
-
-
             <br>
-
             <p>&copy; 2025 Sterling Research. All Rights Reserved.</p>
-
             <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">
-
                 **Non-Registered Disclaimer:** All content is for informational purposes only. Consult a registered advisor for investment decisions.
-
             </p>
-
         </div>
-
     </footer>
-
 </body>
-
 </html>
