@@ -207,14 +207,26 @@
             margin-bottom: 10px;
             display: block;
         }
-
+        
+        /* Style for the clickable title links */
         .card-title {
             font-size: 1.6rem;
             margin-bottom: 15px;
             color: var(--primary-dark);
             line-height: 1.2;
+            cursor: pointer; 
         }
 
+        .card-title a {
+            color: var(--primary-dark); /* Keep color consistent with non-linked title */
+            display: block; /* Makes the entire title area clickable */
+        }
+
+        .card-title a:hover {
+            color: var(--accent-light);
+            border-bottom: none; 
+        }
+        
         .read-more {
             font-weight: 700;
             color: var(--accent-purple);
@@ -343,24 +355,64 @@
             border-top: 5px solid var(--accent-purple);
         }
 
-        /* MOBILE RESPONSIVENESS */
+        /* MOBILE OPTIMIZATION (RESPONSIVENESS) */
         @media (max-width: 900px) {
+            
+            /* General Section Padding */
+            .section, .contact-section { 
+                padding: 50px 5%; 
+            }
+            .skewed-accent { 
+                margin: 50px 0; 
+            }
+            
+            /* Header/Navigation Adjustments for mobile */
+            header {
+                flex-direction: column;
+                padding: 1rem 5%;
+            }
+            .logo {
+                margin-bottom: 10px;
+            }
+            nav ul { 
+                gap: 1rem; 
+                padding: 0;
+                justify-content: center;
+            }
+            
+            /* Hero Section Font Size */
+            .hero-content h1 { 
+                font-size: 2.5rem; 
+            }
+            .hero-content p { 
+                font-size: 1.1rem; 
+            }
+            
+            /* Insights Grid: Adjust minmax for better use of screen width */
+            .grid-container {
+                grid-template-columns: 1fr; /* Stack cards vertically */
+            }
+
+            /* Contact Section Layout Change (Stacking) */
             .contact-content {
                 flex-direction: column;
                 align-items: center;
+                gap: 30px; /* Reduced gap */
             }
             .contact-text-block {
-                order: -1;
+                order: -1; /* Text block above the form on mobile */
                 text-align: center;
                 max-width: 100%;
                 padding-left: 0;
                 padding-top: 0;
             }
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content p { font-size: 1.1rem; }
-            nav ul { gap: 1rem; }
-            .section, .contact-section { padding: 50px 5%; }
-            .skewed-accent { margin: 50px 0; }
+            .contact-text-block h3 {
+                 font-size: 1.8rem;
+            }
+            .contact-form-wrapper {
+                 min-width: unset; /* Allows form to take full width */
+                 width: 100%;
+            }
         }
     </style>
 </head>
@@ -412,62 +464,72 @@ Follow us for consistent market updates, industry trends, and in-depth equity in
     <section class="skewed-accent">
         <div class="skewed-content">
             <h3>"Markets reward clarity. We help you see what others overlook."</h3>
-                 <p style="opacity: 0.8; font-weight: 300;">   — Sterling Research</p>
+                   <p style="opacity: 0.8; font-weight: 300;">  — Sterling Research</p>
         </div>
     </section>
 
    <section class="section insights-bg" id="insights">
-  <h2 class="section-title">Latest Perspectives &amp; Reports</h2>
+        <h2 class="section-title">Latest Perspectives &amp; Reports</h2>
 
-  <div class="grid-container">
+        <div class="grid-container">
 
-    <div class="report-card">
-      <div class="card-image"></div>
-      <div class="card-content">
-        <span class="card-category">MARKET REPORT</span>
-        <h3 class="card-title">THE GREAT INDIAN STOCK
-STAMPEDE</h3>
-        <p>
-          Examines India's rapid retail investor surge, highlighting sustainability concerns linked to rising household debt and market risks balanced by financial inclusion gains.        </p>
-        <a href="reports/stock.pdf" class="read-more" target="_blank" rel="noopener">
-          Read Report →
-        </a>
-      </div>
-    </div>
+            <div class="report-card">
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <span class="card-category">MARKET REPORT</span>
+                    <h3 class="card-title">
+                        <a href="reports/stock.pdf" target="_blank" rel="noopener">
+                            THE GREAT INDIAN STOCK STAMPEDE
+                        </a>
+                    </h3>
+                    <p>
+                        Examines India's rapid retail investor surge, highlighting sustainability concerns linked to rising household debt and market risks balanced by financial inclusion gains.            
+                    </p>
+                    <a href="reports/stock.pdf" class="read-more" target="_blank" rel="noopener">
+                        Read Report →
+                    </a>
+                </div>
+            </div>
 
-    <div class="report-card">
-      <div class="card-image"></div>
-      <div class="card-content">
-        <span class="card-category">ANALYSIS</span>
-        <h3 class="card-title">Equity Research Report
-Yatharth Hospital</h3>
-        <p>
-          Fundamental analysis of Yatharth Hospital, covering business model,
-          financial metrics, growth drivers, and key investment risks.
-        </p>
-        <a href="reports/Yatharth.pdf" class="read-more" target="_blank" rel="noopener">
-          Read Report →
-        </a>
-      </div>
-    </div>
+            <div class="report-card">
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <span class="card-category">ANALYSIS</span>
+                    <h3 class="card-title">
+                        <a href="reports/Yatharth.pdf" target="_blank" rel="noopener">
+                            Equity Research Report Yatharth Hospital
+                        </a>
+                    </h3>
+                    <p>
+                        Fundamental analysis of Yatharth Hospital, covering business model,
+                        financial metrics, growth drivers, and key investment risks.
+                    </p>
+                    <a href="reports/Yatharth.pdf" class="read-more" target="_blank" rel="noopener">
+                        Read Report →
+                    </a>
+                </div>
+            </div>
 
-    <div class="report-card">
-      <div class="card-image"></div>
-      <div class="card-content">
-        <span class="card-category">EVALUATION</span>
-        <h3 class="card-title">Indian Diagnostic Industry
-Research</h3>
-        <p>
-          Study on India's diagnostics industry
-        </p>
-        <a href="reports/report.pdf" class="read-more" target="_blank" rel="noopener">
-          Read Report →
-        </a>
-      </div>
-    </div>
+            <div class="report-card">
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <span class="card-category">EVALUATION</span>
+                    <h3 class="card-title">
+                        <a href="reports/report.pdf" target="_blank" rel="noopener">
+                            Indian Diagnostic Industry Research
+                        </a>
+                    </h3>
+                    <p>
+                        Study on India's diagnostics industry
+                    </p>
+                    <a href="reports/report.pdf" class="read-more" target="_blank" rel="noopener">
+                        Read Report →
+                    </a>
+                </div>
+            </div>
 
-  </div>
-</section>
+        </div>
+    </section>
 
     
     <section id="contact" class="contact-section">
@@ -521,16 +583,16 @@ Research</h3>
         <span class="footer-logo">Sterling Research</span>
         <div class="contact-info">
            <p>
-  Domain: www.sterlingresearch.in<br>
-  Email:
-  <a href="mailto:sterlingresearch4@gmail.com">
-    sterlingresearch4@gmail.com
-  </a><br>
-  Connect with us on LinkedIn for updates:
-  <a href="https://www.linkedin.com/company/sterlingresearch"
-     target="_blank" rel="noopener">
-    https://www.linkedin.com/company/sterlingresearch
-  </a>
+ Domain: www.sterlingresearch.in<br>
+ Email:
+ <a href="mailto:sterlingresearch4@gmail.com">
+   sterlingresearch4@gmail.com
+ </a><br>
+ Connect with us on LinkedIn for updates:
+ <a href="https://www.linkedin.com/company/sterlingresearch"
+    target="_blank" rel="noopener">
+   https://www.linkedin.com/company/sterlingresearch
+ </a>
 </p>
 
 
@@ -543,10 +605,3 @@ Research</h3>
     </footer>
 </body>
 </html>
-
-
-
-
-
-
-
